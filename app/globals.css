@@ -16,12 +16,44 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+body, html {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  
+}
+.main {
+  display: grid;
+  grid-template-columns: 20% 3fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas: 'sidebar main' 'sidebar main';
+}
+
+.sidebar {
+  grid-area: sidebar;
+  transition: 0.5s;
+}
+
+.content, .info, .data {
+  grid-area: main;
+  text-align: center;
+
+}
+.clicked{
+  border-bottom: 3px solid grey;
+  
+
+}
+
+.sidebar-closed {
+  grid-template-areas: 'main main' 'main main';
+  
+}
+
+
+
+nav > ul >li > a{
+ 
+  width: 100%;
 }
