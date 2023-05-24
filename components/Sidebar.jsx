@@ -103,7 +103,7 @@ function Sidebar({ isOpen, toggleSidebar, showButton, onItemClick }) {
                 />
               </svg>
 
-              <span className="mx-2 text-sm font-medium">Data</span>
+              <span className="mx-2 text-sm font-medium">Lista</span>
             </a>
           </li>
           <li
@@ -181,7 +181,7 @@ function Sidebar({ isOpen, toggleSidebar, showButton, onItemClick }) {
       href="#"
       onClick={(e) => handleSubelementClick(e, 1, "Acordeon")}
     >
-      <span className="mx-2 text-sm font-medium">Subelemento 1</span>
+      <span className="mx-2 text-sm font-medium">Acordeon</span>
     </a>
   </li>
 
@@ -239,11 +239,15 @@ function Sidebar({ isOpen, toggleSidebar, showButton, onItemClick }) {
                 />
               </svg>
 
-              <span className="mx-2 text-sm font-medium">Info</span>
+              <span className="mx-2 text-sm font-medium">Header</span>
             </a>
           </li>
-          <li className="py-2">
-            {" "}
+          <li
+            className={`py-2 cursor-pointer ${
+              isItemSelected("CallToAction") ? "clicked" : ""
+            }`}
+            onClick={() => handleClick("CallToAction")}
+          >
             <a
               className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
               href="#"
@@ -263,7 +267,7 @@ function Sidebar({ isOpen, toggleSidebar, showButton, onItemClick }) {
                 />
               </svg>
 
-              <span className="mx-2 text-sm font-medium">Test 2</span>
+              <span className="mx-2 text-sm font-medium">Call to action</span>
             </a>
           </li>
         </ul>
