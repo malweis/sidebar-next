@@ -5,6 +5,7 @@ import Sidebar from '@/components/Sidebar';
 import Main from '@/components/Main';
 import Data from '@/components/Data';
 import Info from '@/components/Info'; 
+import Card from '@/components/Card';
 
 export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -30,6 +31,8 @@ export default function Home() {
         return <Data />;
       case 'Info':
         return <Info />;
+        case 'Card':
+          return <Card />;
      
       default:
         return <Main />;

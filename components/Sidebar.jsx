@@ -94,11 +94,15 @@ function Sidebar({ isOpen, toggleSidebar, showButton, onItemClick }) {
                 />
               </svg>
 
-              <span className="mx-2 text-sm font-medium">Data</span>
+              <span className="mx-2 text-sm font-medium">List</span>
             </a>
           </li>
-          <li className="py-2">
-            {" "}
+          <li
+            className={`py-2 cursor-pointer ${
+              isItemSelected("Card") ? "clicked" : ""
+            }`}
+            onClick={() => handleClick("Card")}
+          >
             <a
               className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
               href="#"
@@ -118,7 +122,7 @@ function Sidebar({ isOpen, toggleSidebar, showButton, onItemClick }) {
                 />
               </svg>
 
-              <span className="mx-2 text-sm font-medium">Test</span>
+              <span className="mx-2 text-sm font-medium">Card</span>
             </a>
           </li>
           <li>
