@@ -14,6 +14,7 @@ function Sidebar({ isOpen, toggleSidebar, showButton, onItemClick }) {
   };
  
   const handleClick = (item, hasChildren) => {
+    debugger;
     if (selectedItem === item) {
       setSelectedItem(null);
       onItemClick(null);
@@ -35,15 +36,23 @@ function Sidebar({ isOpen, toggleSidebar, showButton, onItemClick }) {
     toggleSidebar();
     showButton();
   };
-  const handleSubelementClick = (index) => {
+  
+  const handleSubelementClick = (event, index, item) => {
+    event.stopPropagation(); // Prevent event bubbling
+    if (selectedItem === item) {
+    
+      onItemClick(null);
+    } else {
+
+      onItemClick(item);
+    }
     if (activeSubelement === index) {
-      // If the clicked sub-element is already active, remove the "clicked" class
       setActiveSubelement(null);
     } else {
-      // Set the clicked sub-element as active
       setActiveSubelement(index);
     }
   };
+  
   
 
   const isItemSelected = (item) => {
@@ -94,7 +103,7 @@ function Sidebar({ isOpen, toggleSidebar, showButton, onItemClick }) {
                 />
               </svg>
 
-              <span className="mx-2 text-sm font-medium">List</span>
+              <span className="mx-2 text-sm font-medium">Data</span>
             </a>
           </li>
           <li
@@ -166,33 +175,41 @@ function Sidebar({ isOpen, toggleSidebar, showButton, onItemClick }) {
     </svg>
   </a>
   <ul className={`pl-4 mt-2 text-white ${isDropdownOpen && activeDropdown === "Element3" ? "block" : "hidden"}`}>
-  <li>
+  <li className={`py-2 cursor-pointer ${isItemSelected("Acordeon") ? "clicked" : ""}`} onClick={() => handleClick("Acordeon", true)}>
     <a
-      className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 ${activeSubelement === 1 ? 'clicked' : ''}`}
+      className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 ${activeSubelement === 1 ? "clicked" : ""}`}
       href="#"
-      onClick={() => handleSubelementClick(1)}
+      onClick={(e) => handleSubelementClick(e, 1, "Acordeon")}
     >
       <span className="mx-2 text-sm font-medium">Subelemento 1</span>
     </a>
   </li>
-  <li>
-    <a
-      className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 ${activeSubelement === 2 ? 'clicked' : ''}`}
-      href="#"
-      onClick={() => handleSubelementClick(2)}
-    >
-      <span className="mx-2 text-sm font-medium">Subelemento 2</span>
-    </a>
-  </li>
-  <li>
-    <a
-      className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 ${activeSubelement === 3 ? 'clicked' : ''}`}
-      href="#"
-      onClick={() => handleSubelementClick(3)}
-    >
-      <span className="mx-2 text-sm font-medium">Subelemento 3</span>
-    </a>
-  </li>
+
+
+
+<li>
+  <a
+    className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 ${
+      activeSubelement === 2 ? "clicked" : ""
+    }`}
+    href="#"
+    onClick={(e) => handleSubelementClick(e, 2)}
+  >
+    <span className="mx-2 text-sm font-medium">Subelemento 2</span>
+  </a>
+</li>
+<li>
+  <a
+    className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 ${
+      activeSubelement === 3 ? "clicked" : ""
+    }`}
+    href="#"
+    onClick={(e) => handleSubelementClick(e, 3)}
+  >
+    <span className="mx-2 text-sm font-medium">Subelemento 3</span>
+  </a>
+</li>
+
 </ul>
 
 </li>
