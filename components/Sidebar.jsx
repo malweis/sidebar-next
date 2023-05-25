@@ -187,15 +187,13 @@ function Sidebar({ isOpen, toggleSidebar, showButton, onItemClick }) {
 
 
 
-<li>
-  <a
-    className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 ${
-      activeSubelement === 2 ? "clicked" : ""
-    }`}
-    href="#"
-    onClick={(e) => handleSubelementClick(e, 2)}
-  >
-    <span className="mx-2 text-sm font-medium">Subelemento 2</span>
+  <li className={`py-2 cursor-pointer ${isItemSelected("Footer") ? "clicked" : ""}`} onClick={() => handleClick("Acordeon", true)}>
+    <a
+      className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 ${activeSubelement === 2 ? "clicked" : ""}`}
+      href="#"
+      onClick={(e) => handleSubelementClick(e, 2, "Footer")}
+    >
+    <span className="mx-2 text-sm font-medium">Footer</span>
   </a>
 </li>
 <li>

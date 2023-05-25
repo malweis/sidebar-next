@@ -8,8 +8,8 @@ function Main() {
        
         <div>
         <CustomButton
-        bgColor="bg-blue-500  "
-        textColor="text-white"
+        bgColor="bg-red-400  "
+        textColor="text-black"
         lineColor="border-black"
         sideImage={  <svg
           xmlns="http://www.w3.org/2000/svg"
