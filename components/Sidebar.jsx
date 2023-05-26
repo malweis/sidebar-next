@@ -14,7 +14,7 @@ function Sidebar({ isOpen, toggleSidebar, showButton, onItemClick }) {
   };
  
   const handleClick = (item, hasChildren) => {
-    debugger;
+    
     if (selectedItem === item) {
       setSelectedItem(null);
       onItemClick(null);
@@ -196,15 +196,13 @@ function Sidebar({ isOpen, toggleSidebar, showButton, onItemClick }) {
     <span className="mx-2 text-sm font-medium">Footer</span>
   </a>
 </li>
-<li>
-  <a
-    className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 ${
-      activeSubelement === 3 ? "clicked" : ""
-    }`}
-    href="#"
-    onClick={(e) => handleSubelementClick(e, 3)}
-  >
-    <span className="mx-2 text-sm font-medium">Subelemento 3</span>
+<li className={`py-2 cursor-pointer ${isItemSelected("Mapa") ? "clicked" : ""}`} onClick={() => handleClick("Mapa", true)}>
+    <a
+      className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 ${activeSubelement === 3 ? "clicked" : ""}`}
+      href="#"
+      onClick={(e) => handleSubelementClick(e, 3, "Mapa")}
+    >
+    <span className="mx-2 text-sm font-medium">Mapa</span>
   </a>
 </li>
 

@@ -37,7 +37,7 @@ body, html {
   transition: 0.5s;
 }
 
-.content, .info, .data, .card, .acordeon, .footer{
+.content, .info, .data, .card, .acordeon, .footer, .mapa{
   grid-area: main;
   text-align: center;
 
@@ -91,3 +91,10 @@ nav > ul >li > a{
 .realFooter{
   background: linear-gradient(239.77deg, rgba(35, 174, 253, 0.7) -7.35%, rgba(0, 99, 198, 0.7) 67.87%, rgba(2, 104, 206, 0.7) 67.87%);
 }
+
+#map {
+  width: 100%;
+  height: 40rem; }
+  .icono{
+    color: blue;
+  }

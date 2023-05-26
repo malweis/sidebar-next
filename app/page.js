@@ -1,5 +1,4 @@
 "use client";
-"use client";
 import React, { useState } from 'react';
 import Sidebar from '@/components/Sidebar';
 import Main from '@/components/Main';
@@ -9,6 +8,9 @@ import Card from '@/components/Card';
 import Acordeon from '@/components/Acordeon';
 import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
+import Mapas from '@/components/Mapas';
+import Link from 'next/link';
+import Script from 'next/script';
 
 export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -42,6 +44,8 @@ export default function Home() {
         return <CallToAction />;
       case 'Footer':
         return <Footer />;
+        case 'Mapa':
+          return <Mapas />;
 
       default:
         return <Main />;
@@ -50,6 +54,7 @@ export default function Home() {
 
   return (
     <main className={`main w-full h-full ${isSidebarOpen ? '' : 'sidebar-closed'}`}>
+  
       <Sidebar
         isOpen={isSidebarOpen}
         toggleSidebar={toggleSidebar}
