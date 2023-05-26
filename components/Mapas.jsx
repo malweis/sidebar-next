@@ -1,6 +1,5 @@
-"use client";
-import React, { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import React, { useRef, useState, useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, useMapEvent } from 'react-leaflet';
 import L from 'leaflet';
 import ReactDOMServer from 'react-dom/server';
 import { BloodtypeOutlined } from '@mui/icons-material';
@@ -9,7 +8,7 @@ import 'leaflet/dist/leaflet.css';
 function createCustomIcon() {
   return L.divIcon({
     html: ReactDOMServer.renderToStaticMarkup(
-      <BloodtypeOutlined className='icono' />
+      <BloodtypeOutlined className="icono" />
     ),
     className: '',
     iconSize: [24, 24],
@@ -17,8 +16,13 @@ function createCustomIcon() {
   });
 }
 
+
+
 function Mapas() {
   const [locales, setLocales] = useState([]);
+  const mapRef = useRef();
+  console.log(mapRef.current)
+ 
 
   useEffect(() => {
     fetch('http://192.168.16.90:8000/api/locales')
@@ -30,14 +34,22 @@ function Mapas() {
 
   const customIcon = createCustomIcon();
 
+  const handleMapClick = (e) => {
+    const { latlng } = e;
+    const map = mapRef.current;
+    console.log(mapRef.current)
+    if (map != null) {
+      map.flyTo(latlng, map.getZoom());
+    }
+  };
+
+
+  
+
+
   return (
-      
-
-
-    <div className="bg-rose-800 mapa w-full flex justify-center items-center">
-
-      
-      <MapContainer id="map" center={position} zoom={13} scrollWheelZoom={true}>
+    <div className="bg-rose-800 mapa w-full flex justify-center items-center flex-col gap-8">
+      <MapContainer id="map" ref={mapRef} center={position} zoom={13} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -54,7 +66,6 @@ function Mapas() {
                 <div>
                   <h3>Dirección: {local.direccion}</h3>
                   <h4>Nombre de local: {local.local_donacion}</h4>
-
                   <p>
                     Horario: De {local.hora_apertura} a {local.hora_cierre}
                   </p>
@@ -72,7 +83,21 @@ function Mapas() {
         ) : (
           <p>No hay locales disponibles.</p>
         )}
+
+        
       </MapContainer>
+
+      <div className="button-container flex flex-col  justify-start gap-2">
+        {Array.isArray(locales.data) && locales.data.length > 0 ? (
+          locales.data.map((local) => (
+            <button key={local.id} onClick={() => handleMapClick({ latlng: [local.latitud, local.longitud] })} className='flex justify-start  px-2 py-2 font-sans font-semibold tracking-wide rounded-2xl h-[30px]  w-full h-full bg-blue-500'>
+            Ir a  {local.local_donacion}
+          </button>
+          ))
+        ) : (
+          <p>No hay locales disponibles.</p>
+        )}
+      </div>
     </div>
   );
 }

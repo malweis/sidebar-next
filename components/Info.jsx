@@ -4,19 +4,19 @@ function Info() {
   return (
     <div className='bg-red-200 info'>
        
-      <header class="text-gray-600 body-font headers">
-        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeW  idth="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+      <header className="text-gray-600 body-font headers">
+        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
             </svg>
             
           </a>
-          <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base text-white justify-center">
-            <a class="mr-5 hover:text-gray-900">First Link</a>
-            <a class="mr-5 hover:text-gray-900">Second Link</a>
-            <a class="mr-5 hover:text-gray-900">Third Link</a>
-            <a class="mr-5 hover:text-gray-900">Fourth Link</a>
+          <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base text-white justify-center">
+            <a className="mr-5 hover:text-gray-900">First Link</a>
+            <a className="mr-5 hover:text-gray-900">Second Link</a>
+            <a className="mr-5 hover:text-gray-900">Third Link</a>
+            <a className="mr-5 hover:text-gray-900">Fourth Link</a>
           </nav>
           <CustomButton
         bgColor="bg-white"
